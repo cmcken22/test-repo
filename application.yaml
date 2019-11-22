@@ -1,12 +1,18 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: scheduler-app
-  labels:
-    app: web
+  name: scheduler
 spec:
-containers:
-  - name: scheduler
-    image: scheduler:v1
-    ports:
-      - containerPort: 8000
+  selector:
+    matchLabels:
+      run: scheduler
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: scheduler
+    spec:
+      containers:
+      - name: scheduler
+        ports:
+        - containerPort: 8000
