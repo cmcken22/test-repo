@@ -14,5 +14,6 @@ spec:
     spec:
       containers:
       - name: scheduler
+        image: gcr.io/steam-form-259804/hello-app:v2
         ports:
         - containerPort: 8000
